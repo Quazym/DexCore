@@ -1,63 +1,10 @@
 package dexoria.core.sqlDatabases;
 
-import java.sql.SQLException;
-
-import org.bukkit.Bukkit;
-
 import dexoria.core.DexCore;
 import dexoria.core.currency.CurrencySystem;
-import dexoria.core.mysql.MySQL;
-import dexoria.core.utils.Config;
 
 public class Currency 
 {
-  private Config config;
-  private MySQL sql;
-  public static Currency instance;
-  private CurrencySystem ss;
-
-  public void onEnable()
-  {
-    instance = this;
-
-    this.config = new Config();
-    this.config.onEnable();
-    
-    Bukkit.getLogger().info("Oppining MySQL connection on:" +
-    		   "\n" + getConfigStaticly().getDBDatabase() +
-    		   "\n" + getConfigStaticly().getDBPort() +
-    		   "\n" + getConfigStaticly().getDBDatabase() +
-    	      "\n" +getConfigStaticly().getDBUsername() + 
-    	      "\n" + getConfigStaticly().getDBPassword() );
-    
-    
-    this.sql = new MySQL(DexCore.instance, 
-      getConfigStaticly().getDBHostName(), 
-      getConfigStaticly().getDBPort(), 
-      getConfigStaticly().getDBDatabase(), 
-      getConfigStaticly().getDBUsername(), 
-      getConfigStaticly().getDBPassword());
-
-    this.ss = new CurrencySystem();
-    this.ss.onEnable();
-  }
-
-  public void onDisable()
-  {
-    instance = null;
-    try
-    {
-      this.sql.closeConnection();
-    }
-    catch (SQLException localSQLException)
-    {
-    }
-
-    this.sql = null;
-
-    this.config.onDisable();
-    this.ss.onDisable();
-  }
 
   public static boolean hasEnoughGC(String playerUUID, int amount)
   {
@@ -99,18 +46,7 @@ public class Currency
     return getCurrencySystem().getPlayerCC(playerUUID);
   }
 
-  public Config getConfigInstannce() {
-    return this.config;
-  }
-
-  public static Config getConfigStaticly() {
-    return instance.getConfigInstannce();
-  }
-
   public static CurrencySystem getCurrencySystem() {
-    return instance.ss;
-  }
-  public static MySQL getMySQL() {
-    return instance.sql;
+    return DexCore.getCurrencySystem();
   }
 }

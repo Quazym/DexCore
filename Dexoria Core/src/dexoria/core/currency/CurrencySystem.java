@@ -10,19 +10,12 @@ import dexoria.core.sqlDatabases.Currency;
 
 public class CurrencySystem
 {
-  public void onEnable()
-  {
-  }
-
-  public void onDisable()
-  {
-  }
 
   public boolean playerExists(String playerUUID)
   {
     try
     {
-      ResultSet res = Currency.getMySQL().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
+      ResultSet res = DexCore.getSQLStaticly().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
 
       if (!res.next()) {
         return false;
@@ -40,7 +33,7 @@ public class CurrencySystem
   public void addPlayer(String playerUUID)
   {
     try {
-      Currency.getMySQL().updateSQL("INSERT INTO Currency (`ID`, `playerUUID`, `GC`, `CC`) VALUES (NULL, '" + playerUUID + "', '1000' , '0');");
+      DexCore.getSQLStaticly().updateSQL("INSERT INTO Currency (`ID`, `playerUUID`, `GC`, `CC`) VALUES (NULL, '" + playerUUID + "', '1000' , '0');");
     }
     catch (SQLException|ClassNotFoundException e) {
       e.printStackTrace();
@@ -60,7 +53,7 @@ public class CurrencySystem
   public int getPlayerGC(String playerUUID)
   {
     try {
-      ResultSet res = Currency.getMySQL().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
+      ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
       res.next();
       return res.getInt("GC");
     }
@@ -73,7 +66,7 @@ public class CurrencySystem
   public void setPlayerGC(String playerUUID, int score)
   {
     try {
-      Currency.getMySQL().updateSQL("UPDATE Currency SET GC='" + score + "' WHERE playerUUID='" + playerUUID + "';");
+    	 DexCore.getSQLStaticly().updateSQL("UPDATE Currency SET GC='" + score + "' WHERE playerUUID='" + playerUUID + "';");
     }
     catch (SQLException|ClassNotFoundException e) {
       e.printStackTrace();
@@ -83,7 +76,7 @@ public class CurrencySystem
   public int getPlayerCC(String playerUUID)
   {
     try {
-      ResultSet res = Currency.getMySQL().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
+      ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Currency WHERE playerUUID = '" + playerUUID + "';");
       res.next();
       return res.getInt("CC");
     }
@@ -96,7 +89,7 @@ public class CurrencySystem
   public void setPlayerCC(String playerUUID, int score)
   {
     try {
-      Currency.getMySQL().updateSQL("UPDATE Currency SET CC='" + score + "' WHERE playerUUID='" + playerUUID + "';");
+    	 DexCore.getSQLStaticly().updateSQL("UPDATE Currency SET CC='" + score + "' WHERE playerUUID='" + playerUUID + "';");
     }
     catch (SQLException|ClassNotFoundException e) {
       e.printStackTrace();
