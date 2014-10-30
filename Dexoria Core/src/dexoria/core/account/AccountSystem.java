@@ -108,9 +108,9 @@ public class AccountSystem {
 		int need = 0;
 		
 		List<Ranks> l = new ArrayList<Ranks>();
-		for(Ranks ra : Ranks.values()){
-			l.add(ra);
-		}
+		l.add(Ranks.DEFAULT); l.add(Ranks.ULTIMATE); l.add(Ranks.PLATINUM);
+		l.add(Ranks.BUILDER); l.add(Ranks.INTERN); l.add(Ranks.MOD);
+		l.add(Ranks.ADMIN); l.add(Ranks.OWNER);
 		
 		int place = 0;
 		
