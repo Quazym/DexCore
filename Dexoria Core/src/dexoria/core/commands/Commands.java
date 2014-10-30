@@ -101,6 +101,10 @@ public class Commands implements CommandExecutor {
 		}
 		
 		
+		if(cmd.getName().equalsIgnoreCase("server")){
+			
+		}
+		
 		return false;
 	}
 }
