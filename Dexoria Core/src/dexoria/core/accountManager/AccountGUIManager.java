@@ -7,6 +7,10 @@ public class AccountGUIManager {
 	
 	public AccountGUIManager(){
 	}
+	/**
+	 * String: Players name
+	 * AccountGUI instance.
+	 */
 	public Map<String, AccountGUI> openGUIs = new HashMap<String, AccountGUI>();
 	
 	

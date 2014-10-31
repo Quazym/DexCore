@@ -1,0 +1,13 @@
+name: DexCore
+version: 1.0
+main: dexoria.core.DexCore
+commands:
+   hub:
+      description: The main hub command framework.
+   currency:
+      description: Currency command.
+   server:
+   	  description: Open server settings GUI.
+   account:
+      description: Open account management GUI
+   

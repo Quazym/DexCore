@@ -165,7 +165,6 @@ public class PunishmentSystem {
 	    catch (SQLException|ClassNotFoundException e) {
 	      e.printStackTrace();
 	    }
-	    
 	    return null;
 	  }
 
@@ -173,9 +172,8 @@ public class PunishmentSystem {
 		  List<PastPunishment> pp = new ArrayList<>();
 		  try {
 			ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Punishment WHERE ID = '" + ID + "';");
-
-			pp.add(this.getPunishment(res.getInt("ID")));
 			
+			pp.add(this.getPunishment(res.getInt("ID")));
 			while(res.next()){
 				pp.add(this.getPunishment(res.getInt("ID")));
 			}
