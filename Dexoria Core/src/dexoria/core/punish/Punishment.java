@@ -2,6 +2,8 @@ package dexoria.core.punish;
 
 import org.bukkit.entity.Player;
 
+import dexoria.core.DexCore;
+
 public class Punishment {
 	
 	PunishmentType type;
@@ -12,7 +14,10 @@ public class Punishment {
 	String reason;
 	String staffname;
 	
-	public Punishment(Player p, PunishmentType type, String reason, String staffName){
+	PunishmentSev severity;
+	
+	public Punishment(Player p, PunishmentType type, PunishmentSev sev, String reason, String staffName){
+		this.severity = sev;
 		this.type = type;
 		this.player = p;
 		this.reason = reason;
@@ -20,14 +25,6 @@ public class Punishment {
 	}
 	
 	public void activate(){
-		
-	}
-	
-	public void isActive(){
-		
-	}
-	
-	public void hasExpired(){
-		
+		DexCore.getPunishmentSystem().punishPlayer(UUID, staffname, severity, type, reason);
 	}
 }

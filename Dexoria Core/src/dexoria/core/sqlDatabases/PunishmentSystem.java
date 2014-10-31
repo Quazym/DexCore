@@ -99,7 +99,7 @@ public class PunishmentSystem {
 	}
 		  
 	    try {
-	      DexCore.getSQLStaticly().updateSQL("INSERT INTO Punishment (`ID`, `UUID`, `PlayerName`, `StaffName`, `Sev`, `pType`, `Reason`, `Activated`, `Ends`, `Active`, RemoveReason`) VALUES (NULL, '" + playerUUID + "', '" + Bukkit.getPlayer(playerUUID).getName() + "', '" + staffName + "' , '" + severity + "', '" + pType +"', '" + reason + "','" + start + "','" + end + "', '1', '' );");
+	      DexCore.getSQLStaticly().updateSQL("INSERT INTO Punishment (`ID`, `UUID`, `PlayerName`, `StaffName`, `Sev`, `pType`, `Reason`, `Activated`, `Ends`, `Active`, `RemoveReason`, `RemovedBy`) VALUES (NULL, '" + playerUUID + "', '" + Bukkit.getPlayer(playerUUID).getName() + "', '" + staffName + "' , '" + severity + "', '" + pType +"', '" + reason + "','" + start + "','" + end + "', '1', NULL, NULL );");
 	    }
 	    catch (SQLException|ClassNotFoundException e) {
 	      e.printStackTrace();
@@ -128,6 +128,7 @@ public class PunishmentSystem {
 	      String staff = res.getString("StaffName");
 	      String reason = res.getString("reason");
 	      String remove = res.getString("RemoveReason");
+	      String removedby = res.getString("RemovedReason");
 	      
 	      boolean activate;
 	      if(res.getInt("Active") == 1)
@@ -158,7 +159,7 @@ public class PunishmentSystem {
 	      
 	      PastPunishment p = new PastPunishment(id, player, 
 	    		  type, reason, staff, 
-	    		  		remove, activate, start, end, severity);
+	    		  		remove, removedby ,activate, start, end, severity);
 	      return p;
 	    }
 	    catch (SQLException|ClassNotFoundException e) {

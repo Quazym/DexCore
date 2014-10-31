@@ -25,6 +25,7 @@ public class PastPunishment {
 	int id;
 	
 	String removeReason;
+	String removeStaffName;
 	
 	boolean Activated;
 	
@@ -49,11 +50,13 @@ public class PastPunishment {
 	 */
 	@SuppressWarnings("deprecation")
 	public PastPunishment(int ID, Player p, PunishmentType type, String reason, 
-			String staffName, String remove, boolean Active, Timestamp active, 
+			String staffName, String remove, String removeStaff, boolean Active, Timestamp active, 
 				Timestamp ends, PunishmentSev sev){
 		
 		if(remove != null)
 			this.removeReason = remove;
+		if(removeStaff != null)
+			this.removeStaffName = removeStaff;
 		
 		this.severity = sev;
 		this.date = new Date();
@@ -111,8 +114,19 @@ public class PastPunishment {
 		lore.add(ChatColor.GRAY + "Sev: " + ChatColor.RED + severity.toString());
 		lore.add(ChatColor.GRAY + "Time: " + ChatColor.GREEN + this.start);
 		lore.add(ChatColor.GRAY + "Punisher: " + ChatColor.GREEN + this.staffname);
+		
 		if(this.Activated == true)
 		lore.add(ChatColor.GRAY + "Ends: " + end.toString());
+		
+		if(this.removeReason != null)
+			lore.add(ChatColor.GRAY + "Remove reason: " + ChatColor.GREEN + this.removeReason);
+		
+		if(this.removeStaffName != null)
+			lore.add(ChatColor.GRAY + "Removed by: " + ChatColor.GREEN + this.removeStaffName);
+		
+		lore.add(ChatColor.RED + "" + ChatColor.BOLD + "		Punishment ID:");
+		lore.add(id + "");
+		
 		
 		return i;
 	}
