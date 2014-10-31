@@ -11,5 +11,6 @@ public enum Ranks {
 	INTERN,
 	MOD,
 	ADMIN,
+	DEVELOPER,
 	OWNER;
 }

@@ -12,6 +12,7 @@ import dexoria.core.rank.Ranks;
 
 public class AccountSystem {
 
+	public AccountSystem(){}
 	
     public boolean playerExists(String playerUUID)
     {
@@ -71,7 +72,7 @@ public class AccountSystem {
     	int ranks = 0;
     	
     	switch(rank){
-		case ADMIN: ranks = 6;
+		case ADMIN: ranks = 7;
 			break;
 		case BUILDER: ranks = 3;
 			break;
@@ -81,7 +82,9 @@ public class AccountSystem {
 			break;
 		case MOD: ranks = 5;
 			break;
-		case OWNER: ranks = 7;
+		case OWNER: ranks = 8;
+			break;
+		case DEVELOPER: ranks = 6;
 			break;
 		case PLATINUM: ranks = 2;
 			break;
@@ -110,7 +113,7 @@ public class AccountSystem {
 		List<Ranks> l = new ArrayList<Ranks>();
 		l.add(Ranks.DEFAULT); l.add(Ranks.ULTIMATE); l.add(Ranks.PLATINUM);
 		l.add(Ranks.BUILDER); l.add(Ranks.INTERN); l.add(Ranks.MOD);
-		l.add(Ranks.ADMIN); l.add(Ranks.OWNER);
+		l.add(Ranks.ADMIN); l.add(Ranks.DEVELOPER); l.add(Ranks.OWNER);
 		
 		int place = 0;
 		

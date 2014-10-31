@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import dexoria.core.account.AccountSystem;
 import dexoria.core.commands.Commands;
 import dexoria.core.currency.CurrencySystem;
 import dexoria.core.eventManager.EventManager;
@@ -23,6 +24,8 @@ public class DexCore extends JavaPlugin {
 	
 	private Config config;
 	
+	public static AccountSystem as;
+	
 	public void onEnable() {
 		instance = this;
 		
@@ -32,6 +35,7 @@ public class DexCore extends JavaPlugin {
 		this.getCommand("c").setExecutor(new Commands());
 		
 		cs = new CurrencySystem();
+		as = new AccountSystem();
 		
 	    this.config = new Config();
 	    this.config.onEnable();
@@ -68,6 +72,9 @@ public class DexCore extends JavaPlugin {
 			e.printStackTrace();
 		}
 		this.config.onDisable();
+		
+		cs = null;
+		as = null;
 	}
 	
 	public static DexCore getInstance(){
@@ -92,5 +99,9 @@ public class DexCore extends JavaPlugin {
     
     public static MySQL getSQLStaticly(){
     	return instance.getSQL();
+    }
+    
+    public static AccountSystem getAccountSystem(){
+    	return as;
     }
 }
