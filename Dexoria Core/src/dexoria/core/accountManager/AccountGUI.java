@@ -12,13 +12,15 @@ import dexoria.core.accountManager.customItems.CustomItems;
 
 public class AccountGUI {
 
-	String PlayerName;
+	String AccountsPlayerName;
+	String staffname;
 	
-	public AccountGUI(String playerName){
-		this.PlayerName = playerName;
+	public AccountGUI(String AccountplayerName, String Staffname){
+		this.AccountsPlayerName = AccountplayerName;
+		this.staffname = Staffname;
 	}
 	
-	public Inventory HubGUI = Bukkit.createInventory(null, 6*9, ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "AccountGUI");
+	public Inventory HubGUI = Bukkit.createInventory(Bukkit.getPlayer(staffname), 6*9, ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "AccountGUI");
 	{
 		
 		/*
@@ -35,13 +37,21 @@ public class AccountGUI {
 	
 	BorderItemLoop.doBorderItem(HubGUI, CustomItems.borderItem(), b);
 	
-	HubGUI.setItem(13, CustomItems.head(PlayerName));
+	HubGUI.setItem(13, CustomItems.head(AccountsPlayerName));
 	HubGUI.setItem(27, CustomItems.rank());
 	HubGUI.setItem(30, CustomItems.currency());
 	HubGUI.setItem(33, CustomItems.punish_sword());
 	}
 	
-	public Inventory RankGUI = Bukkit.createInventory(null, 3*9, ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rank Management");
+	public Inventory RankGUI = Bukkit.createInventory(Bukkit.getPlayer(staffname), 3*9, ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rank Management");
+	{
+		//TODO add custom items
+	}
+	public Inventory CurrencyGUI = Bukkit.createInventory(Bukkit.getPlayer(staffname), 3*9, ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Currency Management");
+	{
+		//TODO add custom items
+	}
+	public Inventory PunishmentGUI = Bukkit.createInventory(Bukkit.getPlayer(staffname), 3*9, ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rank Management");
 	{
 		//TODO add custom items
 	}

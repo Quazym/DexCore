@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import dexoria.core.account.AccountSystem;
+import dexoria.core.accountManager.AccountGUIManager;
 import dexoria.core.commands.Commands;
 import dexoria.core.currency.CurrencySystem;
 import dexoria.core.eventManager.EventManager;
@@ -20,11 +21,13 @@ public class DexCore extends JavaPlugin {
 	 */
 	public static CurrencySystem cs;
 	
+	public static AccountSystem as;
+	
+	public static AccountGUIManager am;
+	
 	private MySQL sql;
 	
 	private Config config;
-	
-	public static AccountSystem as;
 	
 	public void onEnable() {
 		instance = this;
@@ -36,6 +39,7 @@ public class DexCore extends JavaPlugin {
 		
 		cs = new CurrencySystem();
 		as = new AccountSystem();
+		am = new AccountGUIManager();
 		
 	    this.config = new Config();
 	    this.config.onEnable();
@@ -75,6 +79,7 @@ public class DexCore extends JavaPlugin {
 		
 		cs = null;
 		as = null;
+		am = null;
 	}
 	
 	public static DexCore getInstance(){
@@ -83,6 +88,10 @@ public class DexCore extends JavaPlugin {
 	
 	public static CurrencySystem getCurrencySystem() {
 		return cs;
+	}
+	
+	public static AccountGUIManager getAccountGUIManager(){
+		return am;
 	}
 	
     public Config getConfigInstannce() {

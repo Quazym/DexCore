@@ -98,6 +98,10 @@ public class Commands implements CommandExecutor {
 		if(cmd.getName().equalsIgnoreCase("a") || 
 				cmd.getName().equalsIgnoreCase("account")){
 			
+			if(args.length <= 0){
+				
+			}
+			
 		}
 		
 		

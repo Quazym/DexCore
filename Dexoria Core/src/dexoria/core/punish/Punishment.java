@@ -1,37 +1,33 @@
 package dexoria.core.punish;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class Punishment {
 	
-	PunishmentType punishment;
 	PunishmentType type;
 	
 	Player player;
+	String UUID = player.getUniqueId().toString();
 	
 	String reason;
+	String staffname;
 	
-	public Punishment(Player p, PunishmentType type, PunishmentType muteOrBan, String reason){
-		this.punishment = muteOrBan;
+	public Punishment(Player p, PunishmentType type, String reason, String staffName){
 		this.type = type;
 		this.player = p;
 		this.reason = reason;
+		this.staffname = staffName;
 	}
 	
-	public void mutePlayer(){
-		
-		if(punishment != PunishmentType.MUTE)
-			Bukkit.getLogger().info("ERROR: Punishment type should of been ban. Punishment Canceled.");
-		
+	public void activate(){
 		
 	}
 	
-	public void banPlayer(){
-
-		if(punishment != PunishmentType.BAN)
-			Bukkit.getLogger().info("ERROR: Punishment type should of been mute. Punishment Canceled.");
+	public void isActive(){
 		
+	}
+	
+	public void hasExpired(){
 		
 	}
 }

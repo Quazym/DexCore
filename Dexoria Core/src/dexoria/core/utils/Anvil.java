@@ -1,18 +1,16 @@
 package dexoria.core.utils;
 
-import org.bukkit.Bukkit;
+import net.minecraft.server.v1_7_R3.PacketPlayOutOpenWindow;
+
+import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.AnvilInventory;
 
 public class Anvil {
 	
-	 public void openAnvil(Player p) {
-	      /*  try {
+	 public void openAnvilInventory(Player p ) {
+	       try {
 	            PacketPlayOutOpenWindow window = new PacketPlayOutOpenWindow(13337, 8, "Anvil", 0, true);
 	            ((CraftPlayer)p).getHandle().playerConnection.sendPacket(window);
-	        } catch(Exception e) {}*/
-		 
-		 AnvilInventory ai = (AnvilInventory) Bukkit.createInventory(null, InventoryType.ANVIL);
+	        } catch(Exception e) {}
 	 }
 }
