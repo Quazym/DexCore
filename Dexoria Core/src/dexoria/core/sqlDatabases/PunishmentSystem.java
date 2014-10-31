@@ -3,7 +3,9 @@ package dexoria.core.sqlDatabases;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -157,7 +159,6 @@ public class PunishmentSystem {
 	      PastPunishment p = new PastPunishment(id, player, 
 	    		  type, reason, staff, 
 	    		  		remove, activate, start, end, severity);
-	      
 	      return p;
 	    }
 	    catch (SQLException|ClassNotFoundException e) {
@@ -167,6 +168,22 @@ public class PunishmentSystem {
 	    return null;
 	  }
 
-	  
+	  public List<PastPunishment> getAllPunishments(int ID){
+		  List<PastPunishment> pp = new ArrayList<>();
+		  try {
+			ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Punishment WHERE ID = '" + ID + "';");
+
+			pp.add(this.getPunishment(res.getInt("ID")));
+			
+			while(res.next()){
+				pp.add(this.getPunishment(res.getInt("ID")));
+			}
+		  } catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		  return pp;
+	  }
 	  
 }

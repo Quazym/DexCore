@@ -6,6 +6,7 @@ import dexoria.core.DexCore;
 
 public class DatabaseManager {
 	
+	@SuppressWarnings("deprecation")
 	public static void onPlayerFirstLogin(String UUID){
 		DexCore.getCurrencySystem().addPlayerIfMissing(UUID);
 		DexCore.getAccountSystem().addPlayerIfMissing(UUID, Bukkit.getPlayer(UUID).getName());

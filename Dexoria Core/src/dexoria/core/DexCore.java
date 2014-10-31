@@ -11,6 +11,7 @@ import dexoria.core.commands.Commands;
 import dexoria.core.currency.CurrencySystem;
 import dexoria.core.eventManager.EventManager;
 import dexoria.core.mysql.MySQL;
+import dexoria.core.sqlDatabases.PunishmentSystem;
 import dexoria.core.utils.Config;
 
 public class DexCore extends JavaPlugin {
@@ -24,6 +25,8 @@ public class DexCore extends JavaPlugin {
 	public static AccountSystem as;
 	
 	public static AccountGUIManager am;
+	
+	public static PunishmentSystem ps;
 	
 	private MySQL sql;
 	
@@ -40,6 +43,7 @@ public class DexCore extends JavaPlugin {
 		cs = new CurrencySystem();
 		as = new AccountSystem();
 		am = new AccountGUIManager();
+		ps = new PunishmentSystem();
 		
 	    this.config = new Config();
 	    this.config.onEnable();
@@ -80,6 +84,7 @@ public class DexCore extends JavaPlugin {
 		cs = null;
 		as = null;
 		am = null;
+		ps = null;
 	}
 	
 	public static DexCore getInstance(){
@@ -112,5 +117,9 @@ public class DexCore extends JavaPlugin {
     
     public static AccountSystem getAccountSystem(){
     	return as;
+    }
+    
+    public static PunishmentSystem getPunishmentSystem(){
+    	return ps;
     }
 }
