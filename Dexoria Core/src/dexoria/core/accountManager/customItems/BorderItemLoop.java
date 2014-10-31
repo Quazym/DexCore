@@ -1,11 +1,9 @@
-package dexoria.core.accountManager;
+package dexoria.core.accountManager.customItems;
 
 import java.util.List;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
-import dexoria.core.accountManager.customItems.CustomItems;
 
 public class BorderItemLoop {
 

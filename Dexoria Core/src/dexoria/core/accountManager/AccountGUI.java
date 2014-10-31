@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Inventory;
 
+import dexoria.core.accountManager.customItems.BorderItemLoop;
 import dexoria.core.accountManager.customItems.CustomItems;
 
 public class AccountGUI {

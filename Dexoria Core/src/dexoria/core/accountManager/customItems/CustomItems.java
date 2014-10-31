@@ -89,7 +89,7 @@ public class CustomItems {
 		
 		if(lore != null)
 			im.setLore(lore);
-		
+
 		i.setItemMeta(im);
 		
 		return i;

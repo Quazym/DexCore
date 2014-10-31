@@ -72,7 +72,7 @@ public class AccountSystem {
     	int ranks = 0;
     	
     	switch(rank){
-		case ADMIN: ranks = 7;
+		case ADMIN: ranks = 6;
 			break;
 		case BUILDER: ranks = 3;
 			break;
@@ -84,7 +84,7 @@ public class AccountSystem {
 			break;
 		case OWNER: ranks = 8;
 			break;
-		case DEVELOPER: ranks = 6;
+		case DEVELOPER: ranks = 7;
 			break;
 		case PLATINUM: ranks = 2;
 			break;
@@ -155,7 +155,9 @@ public class AccountSystem {
 			break;
 		case 6: rank = Ranks.ADMIN;
 			break;
-		case 7: rank = Ranks.OWNER;
+		case 7: rank = Ranks.DEVELOPER;
+			break;
+		case 8: rank = Ranks.OWNER;
 			break;
 		default: rank = Ranks.DEFAULT;
 			break;
