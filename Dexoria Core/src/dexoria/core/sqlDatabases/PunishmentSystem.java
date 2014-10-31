@@ -26,8 +26,10 @@ public class PunishmentSystem {
 		
 		int pType = 1;
 		
+		int severity = 0;
+		
 		switch(sev){
-		case SEV_1: if(type.equals(PunishmentType.CHAT)){
+		case SEV_1: severity = 1; if(type.equals(PunishmentType.CHAT)){
 			end = start;
 			end.setMinutes(end.getMinutes() + 30);
 			
@@ -44,7 +46,7 @@ public class PunishmentSystem {
 			pType = 3;
 		}
 			break;
-		case SEV_2: if(type.equals(PunishmentType.CHAT)){
+		case SEV_2: severity = 2; if(type.equals(PunishmentType.CHAT)){
 			end = start;
 			end.setHours(end.getHours()+ 2);
 			
@@ -61,7 +63,7 @@ public class PunishmentSystem {
 			pType = 3;
 		}
 			break;
-		case SEV_3: if(type.equals(PunishmentType.CHAT)){
+		case SEV_3: severity = 3; if(type.equals(PunishmentType.CHAT)){
 			end = start;
 			end.setHours(end.getHours()+ 24);
 			
@@ -78,7 +80,7 @@ public class PunishmentSystem {
 			pType = 3;
 		}
 			break;
-		case SEV_4: if(type.equals(PunishmentType.CHAT)){
+		case SEV_4: severity = 4; if(type.equals(PunishmentType.CHAT)){
 			end = start;
 			
 			pType = 1;
@@ -95,7 +97,7 @@ public class PunishmentSystem {
 	}
 		  
 	    try {
-	      DexCore.getSQLStaticly().updateSQL("INSERT INTO Punishment (`ID`, `UUID`, `PlayerName`, `StaffName`, `pType`, `Reason`, `Activated`, `Ends`, `Active`, RemoveReason`) VALUES (NULL, '" + playerUUID + "', '" + Bukkit.getPlayer(playerUUID).getName() + "', '" + staffName + "' , '" + pType +"', '" + reason + "','" + start + "','" + end + "', '1', '' );");
+	      DexCore.getSQLStaticly().updateSQL("INSERT INTO Punishment (`ID`, `UUID`, `PlayerName`, `StaffName`, `Sev`, `pType`, `Reason`, `Activated`, `Ends`, `Active`, RemoveReason`) VALUES (NULL, '" + playerUUID + "', '" + Bukkit.getPlayer(playerUUID).getName() + "', '" + staffName + "' , '" + severity + "', '" + pType +"', '" + reason + "','" + start + "','" + end + "', '1', '' );");
 	    }
 	    catch (SQLException|ClassNotFoundException e) {
 	      e.printStackTrace();
@@ -132,9 +134,29 @@ public class PunishmentSystem {
 	    	  activate = false;
 	      }
 	      
+	      int sev = res.getInt("Sev");
+	      
+	      PunishmentSev severity = null;
+	      
+	      switch(sev){
+	      case 1: severity = PunishmentSev.SEV_1;
+	      	break;
+	      case 2: severity = PunishmentSev.SEV_2;
+	      	break;
+	      case 3: severity = PunishmentSev.SEV_3;
+	      	break;
+	      case 4: severity = PunishmentSev.SEV_4;
+	      	break;
+	      default: severity = PunishmentSev.SEV_1;
+	      	break;
+	      }
+	      Timestamp start = res.getTimestamp("Activated");
+	      
+	      Timestamp end = res.getTimestamp("Ends");
+	      
 	      PastPunishment p = new PastPunishment(id, player, 
 	    		  type, reason, staff, 
-	    		  		remove, activate);
+	    		  		remove, activate, start, end, severity);
 	      
 	      return p;
 	    }
