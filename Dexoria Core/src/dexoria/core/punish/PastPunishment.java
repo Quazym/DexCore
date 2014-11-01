@@ -66,6 +66,8 @@ public class PastPunishment {
 		this.staffname = staffName;
 		
 		now = new Timestamp(System.currentTimeMillis());
+		
+		this.hasExpired();
 	}
 	public boolean isActive(){
 		

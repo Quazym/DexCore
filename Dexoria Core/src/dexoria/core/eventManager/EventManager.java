@@ -3,6 +3,9 @@ package dexoria.core.eventManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
+import dexoria.core.DexCore;
+import dexoria.core.eventManager.events.join;
+
 public class EventManager {
 	
 	/*
@@ -11,6 +14,7 @@ public class EventManager {
 	 */
 	public static void registerEvents(){
 		PluginManager pm = Bukkit.getPluginManager();
+		pm.registerEvents(new join(), DexCore.instance);
 	}
 	
 }
