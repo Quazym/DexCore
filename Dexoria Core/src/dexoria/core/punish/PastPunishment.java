@@ -11,6 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import dexoria.core.DexCore;
+
 public class PastPunishment {
 
 	PunishmentType type;
@@ -67,13 +69,12 @@ public class PastPunishment {
 		
 		now = new Timestamp(System.currentTimeMillis());
 		
-		this.hasExpired();
-	}
+		if(this.hasExpired() == true)
+			DexCore.getPunishmentSystem().removePunishment(ID, true, null, null);
+	}	
 	public boolean isActive(){
 		
-		hasExpired();
-		
-		return Activated;
+		return DexCore.getPunishmentSystem().isActive(id);
 		
 	}
 	public boolean hasExpired(){

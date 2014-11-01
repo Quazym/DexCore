@@ -108,7 +108,7 @@ public class PunishmentSystem {
 	  public PastPunishment getPunishment(int ID)
 	  {
 	    try {
-	      ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Punishment WHERE ID = '" + ID + "';");
+	    	 ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Punishment WHERE ID = '" + ID + "';");
 	      Player player = Bukkit.getPlayer(res.getString("PlayerName"));
 	      int pType = res.getInt("pType");
 	      
@@ -182,5 +182,42 @@ public class PunishmentSystem {
 		  
 		  return pp;
 	  }
+	  
+	  public void removePunishment(int id, boolean natural, String reason, String staff) {
+		  try {
+			int not = 0;
+			DexCore.getSQLStaticly().updateSQL("UPDATE Punishment SET Active='" + not + "' WHERE ID='" + id + "';");
+		  
+			if(natural == false){
+				 DexCore.getSQLStaticly().updateSQL("UPDATE Punishment SET RemoveReason='" + reason + "' WHERE ID='" + id + "';");
+				 DexCore.getSQLStaticly().updateSQL("UPDATE Punishment SET RemovedBy='" + staff + "' WHERE ID='" + id + "';");
+			}
+		  
+		  } catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	  }
+	  
+	  public boolean isActive(int id){
+		  try {
+			ResultSet res =  DexCore.getSQLStaticly().querySQL("SELECT * FROM Punishment WHERE ID = '" + id + "';");
+			
+			int active = res.getInt("Active");
+			
+			if(active == 1)
+				return true;
+			
+			if(active == 0)
+				return false;
+		  
+		  
+		  
+		  } catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		  
+		  return false;
+	}
 	  
 }
