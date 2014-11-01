@@ -2,7 +2,6 @@ package dexoria.core.punish;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -34,8 +33,6 @@ public class PastPunishment {
 	
 	Timestamp now;
 	
-	Date date;
-	
 	PunishmentSev severity;
 	
 	/**
@@ -59,7 +56,6 @@ public class PastPunishment {
 			this.removeStaffName = removeStaff;
 		
 		this.severity = sev;
-		this.date = new Date();
 		this.start = active;
 		this.end = ends;
 		this.Activated = Active;
@@ -69,7 +65,7 @@ public class PastPunishment {
 		this.reason = reason;
 		this.staffname = staffName;
 		
-		now = new Timestamp(date.getDate());
+		now = new Timestamp(System.currentTimeMillis());
 	}
 	public boolean isActive(){
 		

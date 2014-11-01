@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -21,10 +20,9 @@ public class PunishmentSystem {
 	  @SuppressWarnings("deprecation")
 	public void punishPlayer(String playerUUID, String staffName, PunishmentSev sev, PunishmentType type, String reason)
 	  {
-		Date date = new Date();
 		
 		Timestamp end = null;
-		Timestamp start = new Timestamp(date.getDate());
+		Timestamp start = new Timestamp(System.currentTimeMillis());
 		
 		int pType = 1;
 		
