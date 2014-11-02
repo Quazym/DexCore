@@ -24,6 +24,12 @@ public class Format {
 			break;
 		case PUNISHED:  message = ChatColor.BLUE + "Punished > ";
 			break;
+		case ABILITY:  message = ChatColor.BLUE + "Ability > "
+		        break;
+                case DONATION:  message = ChatColor.BLUE + "Donation > "
+                        break;
+                case RANK:  message = ChatColor.BLUE + "Rank > "
+                        break;
 		}
 		
 		return message;
