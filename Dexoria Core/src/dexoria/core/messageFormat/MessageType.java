@@ -6,6 +6,10 @@ public enum MessageType {
 	LEAVE,
 	DEATH,
 	KILLED,
+	ABILITY,
+	DONATION,
+	RANK,
+	
 	
 	PUNISHED,
 }
